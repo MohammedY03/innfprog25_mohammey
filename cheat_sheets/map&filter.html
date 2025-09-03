@@ -14,6 +14,7 @@
                 office: "D1-016", 
                 email: "toremake@hiof.no", 
                 birthyear: 1983,
+                courses: ["Innføring i programmering", "Kommunikasjonsdesign", "UI Designprosjekt", "Utvikling av interaktive nettsteder"]
             },
 
             {
@@ -21,6 +22,7 @@
                 office: "D1-015", 
                 email: "danielb@hiof.no", 
                 birthyear: 1977,
+                courses: ["Designmetoder", "UI designprosjekt"]
             },
 
             {
@@ -28,44 +30,62 @@
                 office: "D1-062", 
                 email: "ackarlse@hiof.no", 
                 birthyear: 1992,
+                courses: ["Webutvikling", "Utvikling av interaktive nettsteder"]
             },
 
+                
             {
                 name: "Ole Edvard Ørebæk",
                 office: "D1-061A", 
                 email: "oledvo@hiof.no", 
                 birthyear: 1993,
+                courses: ["Innføring av programmering"]
+            },
+
+            {
+                name: "Thor Andreas Hollberg Murtnes Hollestad",
+                office: "Hjemmekontor", 
+                email: "Thorhol@hiof.no", 
+                birthyear: 1993,
+                courses: ["Innføring av programmering"]
             },
         ]
+
+            console.log(lecturers)
 
         //Mapper ut lecturers
 
         const profiles = document.getElementById("profiles")
 
-        // lecturers.map(lecturer => {
-        //     profiles.innerHTML += `
-        //     <li>
-        //         <h3>${lecturer.name}</h3>
-        //         <span>Alder: ${2025 - lecturer.birthYear}</span>
-        //         <p>Kontor: ${lecturer.office}</p>
-        //             <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
-        //         </li>`
-        //     console.log(lecturers)
-        // })
-
-
-        //Filtrerer hvem av dem du vil skrive ut
-
-        lecturers.filter(lec => lec.birthyear >= 1990).map(lecturer => {
+        lecturers.map(lecturer => {
             profiles.innerHTML += `
             <li>
                 <h3>${lecturer.name}</h3>
                 <span>Alder: ${2025 - lecturer.birthyear}</span>
                 <p>Kontor: ${lecturer.office}</p>
-                <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
+                    <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
+                    <ul>
+                    ${lecturer.courses.map(course => {
+                        return `<li>${course}</li>`
+                    }).join(" ")}
+                    </ul>
                 </li>`
-                console.log(lecturer)
-        } ) 
+            
+        })
+
+
+        //Filtrerer hvem av dem du vil skrive ut
+
+        // lecturers.filter(lec => lec.birthyear >= 1990).map(lecturer => {
+        //     profiles.innerHTML += `
+        //     <li>
+        //         <h3>${lecturer.name}</h3>
+        //         <span>Alder: ${2025 - lecturer.birthyear}</span>
+        //         <p>Kontor: ${lecturer.office}</p>
+        //         <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
+        //         </li>`
+        //         console.log(lecturer)
+        // } ) 
 
 
 
