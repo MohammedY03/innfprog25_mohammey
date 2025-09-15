@@ -40,22 +40,22 @@
                     <tr>
                         <td><img src="icons/variable.svg" alt="" /></td>
                         <td>Variabler</td>
-                        <td id="variablesCount">0</td>
+                        <td><span id="variablesCount">0</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/array.svg" alt="" /></td>
                         <td>Arrayer</td>
-                        <td id="arraysCount">1</span></td>
+                        <td><span id="arraysCount">1</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/loop.svg" alt="" /></td>
                         <td>Løkker</td>
-                        <td id="loopsCount">2</td>
+                        <td><span id="loopsCount">2</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/function.svg" alt="" /></td>
                         <td>Funksjoner</td>
-                        <td id="functionsCount">1</td>
+                        <td><span id="functionsCount">1</span></td>
                     </tr>
                 </table>
             </div>
@@ -75,47 +75,56 @@
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
-        const gameConfig = 
-            {
-                player: "Marius",
+        const gameConfig = {
+                playerName: "Marius",
                 energy: 5,
                 points: 10,
                 duration: 138
             }
 
-           
-        
-
             console.log(gameConfig)
 
-            document.getElementById("playerName").innerHTML = gameConfig.player;
-            document.getElementById("energy").innerHTML = gameConfig.energy;
-            document.getElementById("notebookItems").innerHTML = gameConfig.notebookItems;
-            document.getElementById("points").innerHTML = gameConfig.points;
-            document.getElementById("duration").innerHTML = gameConfig.duration;
 
-
-        const notebook = 
-            {
+             const notebook = {
                 variables: 3,
                 arrays: 2,
                 loops: 4,
                 functions: 7
             }
+        
 
-            console.log(notebook)
+            
+            function updateStaticUI(){
 
-
-            document.getElementById("variablesCount").innerHTML = notebook.variables;
-            document.getElementById("arraysCount").innerHTML = notebook.arrays;
-            document.getElementById("loopsCount").innerHTML = notebook.loops;
-            document.getElementById("functionsCount").innerHTML = notebook.functions;
+            let playerNameHTML = document.getElementById("playerName")
 
             if(gameConfig.playerName === "") {
                 document.getElementById("playerName").innerHTML = "Waiting for player..."
+                for(key in gameConfig){
+                    key === playerName ? playerName : gameConfig[key] = 0
+                }
+
+                for(key in notebook){
+                    notebook[key] = 0
+                }
             } else {
                 document.getElementById("playerName").innerHTML = gameConfig.playerName
             }
+
+            document.getElementById("energy").innerHTML = gameConfig.energy
+            document.getElementById("points").innerHTML = gameConfig.points
+            document.getElementById("duration").innerHTML = gameConfig.duration
+
+            document.getElementById("variablesCount").innerHTML = notebook.variables
+            document.getElementById("arraysCount").innerHTML = notebook.arrays
+            document.getElementById("loopsCount").innerHTML = notebook.loops
+            document.getElementById("functionsCount").innerHTML = notebook.functions    
+            }
+
+            updateStaticUI()
+            
+            
+            
 
 
           
